@@ -1,36 +1,27 @@
-import { useContext } from "react";
-
-import { usercontext } from "./appcontext";
-
+import { useEffect } from "react";
 
 function Googlebtn() {
+    const API_BASE_URL =
+        import.meta.env.VITE_API_BASE_URL || "";
 
-    const { backendURL } =
-        useContext(usercontext);
-
+    useEffect(() => {
+        // Google OAuth is handled by Spring Security.
+        // This component is kept for compatibility with the project.
+    }, []);
 
     const handleGoogleLogin = () => {
-
         window.location.href =
-            `${backendURL.replace(
-                "/resumeAnalyser/entry/v1",
-                ""
-            )}/oauth2/authorization/google`;
+            `${API_BASE_URL}/oauth2/authorization/google`;
     };
 
-
     return (
-
         <button
             type="button"
             onClick={handleGoogleLogin}
         >
-
             Continue with Google
-
         </button>
     );
 }
-
 
 export default Googlebtn;
