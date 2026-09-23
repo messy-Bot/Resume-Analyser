@@ -1,18 +1,11 @@
 .container {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background: #f5f7fb;
 }
-
-
-/* =========================
-   NAVBAR
-   ========================= */
 
 .navbar {
     width: 100%;
-    min-height: 70px;
-    padding: 15px 7%;
+    padding: 20px 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,242 +13,353 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
-
 .logo {
-    margin: 0;
+    text-decoration: none;
     font-size: 24px;
-    font-weight: 700;
-    color: #1f2937;
+    font-weight: 800;
+    color: #2563eb;
 }
 
-
-.navlinks {
+.navLinks {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
+.welcome {
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 500;
+}
 
-.navlinks button {
+.navButton {
+    text-decoration: none;
     padding: 10px 20px;
     border-radius: 8px;
-    background: transparent;
-    color: #374151;
-    font-size: 15px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
     font-weight: 600;
+    transition: 0.2s ease;
 }
 
-
-.navlinks button:hover {
-    background: #f3f4f6;
+.navButton:hover {
+    background: #1d4ed8;
 }
-
-
-.username {
-    color: #374151;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-
-/* =========================
-   HERO SECTION
-   ========================= */
 
 .hero {
-    width: 100%;
+    width: 86%;
     max-width: 1200px;
-    margin: auto;
-    padding: 80px 7%;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 60px;
-    align-items: center;
-}
+    margin: 0 auto;
+    padding: 90px 0 70px;
 
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 70px;
+}
 
 .heroContent {
     max-width: 650px;
 }
 
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    margin-bottom: 20px;
 
-.tagline {
-    margin-bottom: 18px;
-    color: #2563eb;
-    font-size: 14px;
+    border-radius: 30px;
+    background: #dbeafe;
+    color: #1d4ed8;
+
+    font-size: 13px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
+.heroContent h1 {
+    margin-bottom: 22px;
 
-.heroContent h2 {
-    margin-bottom: 24px;
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1.08;
+    letter-spacing: -2px;
     color: #111827;
-    font-size: 48px;
-    line-height: 1.15;
 }
 
+.heroContent h1 span {
+    display: block;
+    color: #2563eb;
+}
 
-.description {
+.heroContent p {
     max-width: 600px;
     margin-bottom: 32px;
+
     color: #6b7280;
     font-size: 18px;
     line-height: 1.7;
 }
 
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
 
-/* =========================
-   BUTTON
-   ========================= */
+.primaryButton,
+.secondaryButton {
+    padding: 14px 24px;
+    border-radius: 9px;
 
-.primaryButton {
-    padding: 14px 28px;
-    border-radius: 10px;
-    background: #2563eb;
-    color: #ffffff;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
+    text-decoration: none;
+
     transition: 0.2s ease;
 }
 
+.primaryButton {
+    background: #2563eb;
+    color: #ffffff;
+}
 
 .primaryButton:hover {
     background: #1d4ed8;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
+.secondaryButton {
+    background: #ffffff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+}
 
-/* =========================
-   INFORMATION CARD
-   ========================= */
+.secondaryButton:hover {
+    background: #eff6ff;
+}
 
 .heroCard {
-    padding: 35px;
+    padding: 30px;
+
+    background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.08);
 }
 
-
-.cardIcon {
-    width: 55px;
-    height: 55px;
-    margin-bottom: 22px;
+.cardHeader {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 14px;
-    background: #2563eb;
-    color: #ffffff;
-    font-size: 18px;
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+
+    color: #111827;
+    font-size: 16px;
     font-weight: 700;
 }
 
+.status {
+    padding: 6px 10px;
+    border-radius: 20px;
 
-.heroCard h3 {
-    margin-bottom: 14px;
-    color: #111827;
-    font-size: 24px;
+    background: #dcfce7;
+    color: #15803d;
+
+    font-size: 11px;
 }
 
+.scoreCircle {
+    width: 150px;
+    height: 150px;
 
-.heroCard p {
-    margin-bottom: 24px;
-    color: #6b7280;
-    line-height: 1.6;
-}
+    margin: 0 auto 35px;
 
-
-.featureList {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    color: #374151;
-    font-size: 15px;
-    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+
+    border: 12px solid #dbeafe;
+    border-right-color: #2563eb;
+    border-bottom-color: #2563eb;
+    border-radius: 50%;
 }
 
+.scoreCircle strong {
+    color: #111827;
+    font-size: 42px;
+    line-height: 1;
+}
 
-/* =========================
-   FOOTER
-   ========================= */
+.scoreCircle span {
+    margin-top: 7px;
+    color: #6b7280;
+    font-size: 12px;
+}
 
-.footer {
-    margin-top: auto;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #e5e7eb;
+.progressItem {
+    margin-bottom: 22px;
+}
+
+.progressItem > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    color: #4b5563;
+    font-size: 13px;
+}
+
+.progressItem strong {
+    color: #111827;
+}
+
+.progress {
+    width: 100%;
+    height: 8px;
+
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e5e7eb;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: #2563eb;
+}
+
+.features {
+    width: 86%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0 80px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.feature {
+    padding: 28px;
+
     background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+
+    transition: 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.07);
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: #eff6ff;
+
+    font-size: 23px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+
+    color: #111827;
+    font-size: 18px;
+}
+
+.feature p {
+    margin-bottom: 0;
+
     color: #6b7280;
     font-size: 14px;
+    line-height: 1.7;
 }
 
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-@media (max-width: 850px) {
-
+@media (max-width: 900px) {
     .hero {
         grid-template-columns: 1fr;
+        gap: 45px;
         padding-top: 60px;
-        padding-bottom: 60px;
     }
 
-
-    .heroContent h2 {
-        font-size: 38px;
+    .heroContent {
+        max-width: 100%;
+        text-align: center;
     }
 
+    .heroContent p {
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-    .heroCard {
-        max-width: 600px;
+    .actions {
+        justify-content: center;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
     }
 }
 
-
 @media (max-width: 600px) {
-
     .navbar {
-        padding: 15px 5%;
+        padding: 16px 5%;
     }
-
 
     .logo {
         font-size: 20px;
     }
 
-
-    .navlinks {
-        gap: 8px;
+    .welcome {
+        display: none;
     }
-
-
-    .navlinks button {
-        padding: 8px 12px;
-    }
-
 
     .hero {
-        padding: 45px 5%;
+        width: 90%;
+        padding: 50px 0;
     }
 
-
-    .heroContent h2 {
-        font-size: 32px;
+    .heroContent h1 {
+        font-size: 42px;
+        letter-spacing: -1px;
     }
 
-
-    .description {
+    .heroContent p {
         font-size: 16px;
     }
 
+    .actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: 100%;
+        text-align: center;
+    }
 
     .heroCard {
-        padding: 25px;
+        padding: 22px;
+    }
+
+    .features {
+        width: 90%;
+        padding-bottom: 50px;
     }
 }
