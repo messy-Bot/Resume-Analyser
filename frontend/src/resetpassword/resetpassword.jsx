@@ -1,247 +1,159 @@
-import {
-    useContext,
-    useState
-} from "react";
-
-import {
-    useNavigate
-} from "react-router-dom";
-
-import {
-    toast
-} from "react-toastify";
-
-import Styles from "./resetpassword.module.css";
-
-import {
-    usercontext
-} from "../appcontext";
-
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { usercontext } from "../appcontext";
+import styles from "./resetpassword.module.css";
 
 function Resetpassword() {
+    const { backendURL } = useContext(usercontext);
+    const navigate = useNavigate();
 
-    const navigate =
-        useNavigate();
-
-    const {
-        backendURL
-    } = useContext(usercontext);
-
-
-    const [email, setEmail] =
-        useState("");
-
-    const [otp, setOtp] =
-        useState("");
-
-    const [password, setPassword] =
-        useState("");
-
-    const [confirmPassword, setConfirmPassword] =
-        useState("");
-
-    const [step, setStep] =
-        useState(1);
-
-    const [loading, setLoading] =
-        useState(false);
-
+    const [step, setStep] = useState(1);
+    const [email, setEmail] = useState("");
+    const [otp, setOtp] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const sendOtp = async (event) => {
-
         event.preventDefault();
 
-        if (!email.trim()) {
-
-            toast.warn(
-                "Please enter your email."
-            );
-
+        if (!email) {
+            toast.error("Please enter your email.");
             return;
         }
 
         setLoading(true);
 
         try {
+            const response = await fetch(
+                `${backendURL}/resetOtpSent`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify({ email })
+                }
+            );
 
-            const response =
-                await fetch(
-                    `${backendURL}/resetOtpSent`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-                        body: JSON.stringify({
-                            email: email.trim()
-                        })
-                    }
-                );
-
-            const message =
-                await response.text();
+            const data = await response.json();
 
             if (!response.ok) {
                 throw new Error(
-                    message ||
+                    data?.message ||
+                    data?.error ||
                     "Unable to send OTP."
                 );
             }
 
             toast.success(
-                "OTP sent successfully."
+                "OTP sent to your registered email."
             );
 
             setStep(2);
-
         } catch (error) {
-
-            console.error(
-                "OTP error:",
-                error
-            );
-
             toast.error(
                 error.message ||
                 "Unable to send OTP."
             );
-
         } finally {
-
             setLoading(false);
         }
     };
 
-
     const verifyOtp = async (event) => {
-
         event.preventDefault();
 
-        if (!otp.trim()) {
-
-            toast.warn(
-                "Please enter the OTP."
-            );
-
+        if (!otp) {
+            toast.error("Please enter the OTP.");
             return;
         }
 
         setLoading(true);
 
         try {
+            const response = await fetch(
+                `${backendURL}/verifyResetOtp`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify({
+                        email,
+                        otp
+                    })
+                }
+            );
 
-            const response =
-                await fetch(
-                    `${backendURL}/verifyResetOtp`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-                        body: JSON.stringify({
-                            email: email.trim(),
-                            otp: otp.trim()
-                        })
-                    }
-                );
-
-            const message =
-                await response.text();
+            const data = await response.json();
 
             if (!response.ok) {
                 throw new Error(
-                    message ||
+                    data?.message ||
+                    data?.error ||
                     "Invalid OTP."
                 );
             }
 
-            toast.success(
-                "OTP verified successfully."
-            );
+            toast.success("OTP verified.");
 
             setStep(3);
-
         } catch (error) {
-
-            console.error(
-                "OTP verification error:",
-                error
-            );
-
             toast.error(
                 error.message ||
-                "Invalid OTP."
+                "OTP verification failed."
             );
-
         } finally {
-
             setLoading(false);
         }
     };
 
-
     const resetPassword = async (event) => {
-
         event.preventDefault();
 
-        if (!password || !confirmPassword) {
-
-            toast.warn(
-                "Please enter both passwords."
-            );
-
-            return;
-        }
-
         if (password.length < 8) {
-
-            toast.warn(
+            toast.error(
                 "Password must contain at least 8 characters."
             );
-
             return;
         }
 
         if (password !== confirmPassword) {
-
-            toast.error(
-                "Passwords do not match."
-            );
-
+            toast.error("Passwords do not match.");
             return;
         }
 
         setLoading(true);
 
         try {
+            const response = await fetch(
+                `${backendURL}/resetPassword`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify({
+                        email,
+                        otp,
+                        password,
+                        confirmPassword
+                    })
+                }
+            );
 
-            const response =
-                await fetch(
-                    `${backendURL}/resetPassword`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type":
-                                "application/json"
-                        },
-                        body: JSON.stringify({
-                            email: email.trim(),
-                            password: password,
-                            confirmPassword:
-                                confirmPassword
-                        })
-                    }
-                );
-
-            const message =
-                await response.text();
+            const data = await response.json();
 
             if (!response.ok) {
                 throw new Error(
-                    message ||
-                    "Password reset failed."
+                    data?.message ||
+                    data?.error ||
+                    "Unable to reset password."
                 );
             }
 
@@ -250,109 +162,109 @@ function Resetpassword() {
             );
 
             navigate("/login");
-
         } catch (error) {
-
-            console.error(
-                "Password reset error:",
-                error
-            );
-
             toast.error(
                 error.message ||
                 "Password reset failed."
             );
-
         } finally {
-
             setLoading(false);
         }
     };
 
-
     return (
+        <main className={styles.page}>
+            <div className={styles.card}>
 
-        <div className={Styles.container}>
+                <Link
+                    to="/"
+                    className={styles.logo}
+                >
+                    Resume Analyser
+                </Link>
 
-            <div className={Styles.card}>
+                <div className={styles.header}>
+                    <h1>Reset Password</h1>
 
-                <h1>
-                    Reset Password
-                </h1>
+                    <p>
+                        {step === 1 &&
+                            "Enter your email to receive an OTP."}
 
+                        {step === 2 &&
+                            "Enter the OTP sent to your email."}
+
+                        {step === 3 &&
+                            "Create a new password for your account."}
+                    </p>
+                </div>
 
                 {step === 1 && (
+                    <form
+                        className={styles.form}
+                        onSubmit={sendOtp}
+                    >
+                        <div className={styles.field}>
+                            <label htmlFor="email">
+                                Email Address
+                            </label>
 
-                    <form onSubmit={sendOtp}>
-
-                        <p>
-                            Enter your registered
-                            email address to receive
-                            an OTP.
-                        </p>
-
-                        <label htmlFor="email">
-                            Email
-                        </label>
-
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(event) =>
-                                setEmail(
-                                    event.target.value
-                                )
-                            }
-                            placeholder="Enter your email"
-                            autoComplete="email"
-                            required
-                        />
+                            <input
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={(event) =>
+                                    setEmail(
+                                        event.target.value
+                                    )
+                                }
+                                placeholder="Enter your email"
+                                autoComplete="email"
+                                required
+                            />
+                        </div>
 
                         <button
                             type="submit"
+                            className={styles.submitButton}
                             disabled={loading}
                         >
                             {loading
                                 ? "Sending..."
                                 : "Send OTP"}
                         </button>
-
                     </form>
-
                 )}
 
-
                 {step === 2 && (
+                    <form
+                        className={styles.form}
+                        onSubmit={verifyOtp}
+                    >
+                        <div className={styles.field}>
+                            <label htmlFor="otp">
+                                OTP
+                            </label>
 
-                    <form onSubmit={verifyOtp}>
-
-                        <p>
-                            Enter the OTP sent to
-                            your email address.
-                        </p>
-
-                        <label htmlFor="otp">
-                            OTP
-                        </label>
-
-                        <input
-                            id="otp"
-                            type="text"
-                            value={otp}
-                            onChange={(event) =>
-                                setOtp(
-                                    event.target.value
-                                )
-                            }
-                            placeholder="Enter OTP"
-                            maxLength={6}
-                            autoComplete="one-time-code"
-                            required
-                        />
+                            <input
+                                id="otp"
+                                type="text"
+                                inputMode="numeric"
+                                maxLength={6}
+                                value={otp}
+                                onChange={(event) =>
+                                    setOtp(
+                                        event.target.value
+                                            .replace(/\D/g, "")
+                                    )
+                                }
+                                placeholder="Enter 6-digit OTP"
+                                required
+                            />
+                        </div>
 
                         <button
                             type="submit"
+                            className={styles.submitButton}
                             disabled={loading}
                         >
                             {loading
@@ -362,93 +274,81 @@ function Resetpassword() {
 
                         <button
                             type="button"
-                            className={Styles.backbtn}
-                            onClick={() =>
-                                setStep(1)
-                            }
+                            className={styles.backButton}
+                            onClick={() => setStep(1)}
                         >
                             Change Email
                         </button>
-
                     </form>
-
                 )}
 
-
                 {step === 3 && (
+                    <form
+                        className={styles.form}
+                        onSubmit={resetPassword}
+                    >
+                        <div className={styles.field}>
+                            <label htmlFor="password">
+                                New Password
+                            </label>
 
-                    <form onSubmit={resetPassword}>
+                            <input
+                                id="password"
+                                type="password"
+                                value={password}
+                                onChange={(event) =>
+                                    setPassword(
+                                        event.target.value
+                                    )
+                                }
+                                placeholder="Minimum 8 characters"
+                                autoComplete="new-password"
+                                required
+                            />
+                        </div>
 
-                        <p>
-                            Create a new password
-                            for your account.
-                        </p>
+                        <div className={styles.field}>
+                            <label htmlFor="confirmPassword">
+                                Confirm Password
+                            </label>
 
-                        <label htmlFor="password">
-                            New Password
-                        </label>
-
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={(event) =>
-                                setPassword(
-                                    event.target.value
-                                )
-                            }
-                            placeholder="Enter new password"
-                            autoComplete="new-password"
-                            required
-                        />
-
-                        <label htmlFor="confirmPassword">
-                            Confirm Password
-                        </label>
-
-                        <input
-                            id="confirmPassword"
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(event) =>
-                                setConfirmPassword(
-                                    event.target.value
-                                )
-                            }
-                            placeholder="Confirm new password"
-                            autoComplete="new-password"
-                            required
-                        />
+                            <input
+                                id="confirmPassword"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(event) =>
+                                    setConfirmPassword(
+                                        event.target.value
+                                    )
+                                }
+                                placeholder="Confirm your password"
+                                autoComplete="new-password"
+                                required
+                            />
+                        </div>
 
                         <button
                             type="submit"
+                            className={styles.submitButton}
                             disabled={loading}
                         >
                             {loading
                                 ? "Resetting..."
                                 : "Reset Password"}
                         </button>
-
                     </form>
-
                 )}
 
-
-                <button
-                    type="button"
-                    className={Styles.loginbtn}
-                    onClick={() =>
-                        navigate("/login")
-                    }
-                >
-                    Back to Login
-                </button>
+                <p className={styles.loginText}>
+                    Remember your password?{" "}
+                    <Link to="/login">
+                        Back to Login
+                    </Link>
+                </p>
 
             </div>
-
-        </div>
+        </main>
     );
 }
-
 
 export default Resetpassword;
