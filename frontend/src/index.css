@@ -1,29 +1,27 @@
-:root {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #222;
-    background: #f5f7fb;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-}
-
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 html {
+    margin: 0;
+    padding: 0;
     scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
+    padding: 0;
     min-width: 320px;
     min-height: 100vh;
-    background: #f5f7fb;
-}
 
-#root {
-    min-height: 100vh;
+    font-family:
+        "Poppins",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #f5f7fb;
+    color: #111827;
 }
 
 button,
@@ -35,19 +33,38 @@ select {
 
 button {
     border: none;
+    cursor: pointer;
 }
 
-input,
-textarea,
-select {
-    outline: none;
+button:disabled {
+    cursor: not-allowed;
 }
 
 a {
     color: inherit;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 ul,
 ol {
-    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+}
+
+#root {
+    min-height: 100vh;
 }
