@@ -1,0 +1,336 @@
+.container {
+    min-height: 100vh;
+    padding-bottom: 50px;
+    background: #f5f7fb;
+}
+
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.nav {
+    min-height: 70px;
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.nav h1 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 24px;
+}
+
+
+.nav button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+.nav button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   UPLOAD CONTAINER
+   ========================= */
+
+.uploadcontainer {
+    width: 90%;
+    max-width: 650px;
+    margin: 60px auto 30px;
+    padding: 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+}
+
+
+.uploadcontainer h2 {
+    margin-bottom: 30px;
+    color: #111827;
+    text-align: center;
+    font-size: 28px;
+}
+
+
+.uploadcontainer form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.uploadcontainerlabel {
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.uploadcontainer input[type="text"] {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    color: #111827;
+    font-size: 15px;
+}
+
+
+.uploadcontainer input[type="text"]:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+
+/* =========================
+   FILE UPLOAD
+   ========================= */
+
+.fileinp {
+    min-height: 180px;
+    margin-bottom: 25px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #9ca3af;
+    border-radius: 12px;
+    background: #f9fafb;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s ease;
+}
+
+
+.fileinp:hover {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+
+.fileinp p {
+    margin-bottom: 12px;
+    color: #374151;
+    font-size: 16px;
+}
+
+
+.fileinp h5 {
+    margin-bottom: 12px;
+    padding: 10px 18px;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+
+.spn {
+    max-width: 100%;
+    overflow: hidden;
+    color: #6b7280;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   ANALYSE BUTTON
+   ========================= */
+
+.uploadcontainer form > button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.uploadcontainer form > button:hover {
+    background: #1d4ed8;
+}
+
+
+.uploadcontainer form > button:disabled {
+    background: #93c5fd;
+}
+
+
+/* =========================
+   GUIDELINES
+   ========================= */
+
+.guidelinescontainer {
+    width: 90%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    background: #ffffff;
+}
+
+
+.guidelinescontainer h2 {
+    margin-bottom: 20px;
+    color: #111827;
+    font-size: 22px;
+}
+
+
+.guidelinescontainer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.guidelinescontainer li {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+.guidelinescontainer li span {
+    color: #374151;
+    font-weight: 700;
+}
+
+
+/* =========================
+   LOADING OVERLAY
+   ========================= */
+
+.loadani {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.94);
+}
+
+
+.loadani h1 {
+    margin-top: 25px;
+    color: #1f2937;
+    font-size: 24px;
+}
+
+
+.loadanimation {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.capstart {
+    width: 55px;
+    height: 55px;
+    border: 6px solid #2563eb;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+
+.loadblock {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #2563eb;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(0.7);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .nav {
+        padding: 15px 5%;
+    }
+
+
+    .nav h1 {
+        font-size: 20px;
+    }
+
+
+    .nav button {
+        padding: 8px 14px;
+    }
+
+
+    .uploadcontainer {
+        width: 92%;
+        margin-top: 35px;
+        padding: 25px 20px;
+    }
+
+
+    .uploadcontainer h2 {
+        font-size: 24px;
+    }
+
+
+    .guidelinescontainer {
+        width: 92%;
+        padding: 25px 20px;
+    }
+}
