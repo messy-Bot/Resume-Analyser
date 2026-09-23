@@ -1,190 +1,226 @@
-.container {
+.page {
     min-height: 100vh;
+    padding: 40px 20px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px 20px;
+
     background: #f5f7fb;
 }
 
-
-.loginbox {
+.card {
     width: 100%;
     max-width: 450px;
     padding: 40px;
+
+    background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.08);
 }
 
+.logo {
+    display: block;
+    margin-bottom: 35px;
 
-.backButton {
-    margin-bottom: 25px;
-    padding: 0;
-    background: transparent;
     color: #2563eb;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 23px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
 }
 
-
-.backButton:hover {
-    text-decoration: underline;
-}
-
-
-.loginbox h1 {
-    margin-bottom: 10px;
-    color: #111827;
-    font-size: 32px;
-}
-
-
-.subtitle {
+.header {
     margin-bottom: 30px;
-    color: #6b7280;
-    line-height: 1.5;
+    text-align: center;
 }
 
+.header h1 {
+    margin-bottom: 8px;
 
-.loginbox form {
+    color: #111827;
+    font-size: 30px;
+}
+
+.header p {
+    margin: 0;
+
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.form {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
-.loginbox label {
-    margin-bottom: 8px;
+.field label,
+.passwordLabel label {
     color: #374151;
     font-size: 14px;
     font-weight: 600;
 }
 
-
-.loginbox input {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 13px 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    background: #ffffff;
-    color: #111827;
-    font-size: 15px;
+.passwordLabel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-
-.loginbox input:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-
-.forgotButton {
-    align-self: flex-end;
-    margin-top: -8px;
-    margin-bottom: 20px;
-    padding: 0;
-    background: transparent;
+.passwordLabel a {
     color: #2563eb;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
 }
 
-
-.forgotButton:hover {
+.passwordLabel a:hover {
     text-decoration: underline;
 }
 
+.field input {
+    width: 100%;
+    padding: 13px 14px;
 
-.loginButton {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+
+    background: #ffffff;
+    color: #111827;
+    font-size: 14px;
+
+    transition: 0.2s ease;
+}
+
+.field input:focus {
+    border-color: #2563eb;
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.field input::placeholder {
+    color: #9ca3af;
+}
+
+.submitButton {
     width: 100%;
     padding: 14px;
+
     border-radius: 8px;
     background: #2563eb;
     color: #ffffff;
-    font-size: 16px;
+
+    font-size: 15px;
     font-weight: 700;
+
+    transition: 0.2s ease;
 }
 
-
-.loginButton:hover {
+.submitButton:hover:not(:disabled) {
     background: #1d4ed8;
 }
 
+.submitButton:disabled {
+    opacity: 0.65;
+}
 
 .divider {
     position: relative;
-    margin: 25px 0;
-    text-align: center;
-}
 
+    margin: 25px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .divider::before {
     content: "";
+
     position: absolute;
-    top: 50%;
     left: 0;
-    width: 100%;
+    right: 0;
+
     height: 1px;
     background: #e5e7eb;
 }
 
-
 .divider span {
     position: relative;
     padding: 0 12px;
+
     background: #ffffff;
     color: #9ca3af;
-    font-size: 13px;
+
+    font-size: 12px;
 }
 
+.googleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.loginbox > button:not(.backButton) {
     width: 100%;
     padding: 13px;
+
     border: 1px solid #d1d5db;
     border-radius: 8px;
+
     background: #ffffff;
     color: #374151;
-    font-size: 15px;
+
+    font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
+
+    transition: 0.2s ease;
 }
 
-
-.loginbox > button:not(.backButton):hover {
+.googleButton:hover {
     background: #f9fafb;
+    border-color: #9ca3af;
 }
-
 
 .registerText {
-    margin-top: 25px;
-    text-align: center;
+    margin: 25px 0 0;
+
     color: #6b7280;
-    font-size: 14px;
+    font-size: 13px;
+    text-align: center;
 }
 
-
-.registerText button {
-    padding: 0;
-    background: transparent;
+.registerText a {
     color: #2563eb;
     font-weight: 700;
+    text-decoration: none;
 }
 
-
-.registerText button:hover {
+.registerText a:hover {
     text-decoration: underline;
 }
 
-
 @media (max-width: 500px) {
-
-    .loginbox {
-        padding: 30px 22px;
+    .page {
+        padding: 20px;
     }
 
+    .card {
+        padding: 28px 22px;
+    }
 
-    .loginbox h1 {
-        font-size: 28px;
+    .header h1 {
+        font-size: 26px;
     }
 }
