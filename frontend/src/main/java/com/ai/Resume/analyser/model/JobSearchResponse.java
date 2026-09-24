@@ -1,15 +1,31 @@
 package com.ai.Resume.analyser.model;
 
-import lombok.Data;
-
 import java.util.List;
 
-@Data
 public class JobSearchResponse {
 
     private List<Job> results;
 
     private int count;
 
-    private double mean;
+    public JobSearchResponse() {
+    }
+
+    public List<Job> getResults() {
+        return results;
+    }
+
+    public void setResults(
+            List<Job> results) {
+
+        this.results = results;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }
