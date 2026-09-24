@@ -1,13 +1,24 @@
 package com.ai.Resume.analyser.model;
 
-import lombok.Data;
-
-import java.util.List;
-
-@Data
 public class Location {
 
     private String display_name;
 
-    private List<String> area;
+    public Location() {
+    }
+
+    public Location(String display_name) {
+        this.display_name = display_name;
+    }
+
+    public String getDisplay_name() {
+        return display_name;
+    }
+
+    public void setDisplay_name(
+            String display_name) {
+
+        this.display_name =
+                display_name;
+    }
 }
