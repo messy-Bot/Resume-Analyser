@@ -30,9 +30,24 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Check backend files
+        run: |
+          echo "Current directory:"
+          pwd
+
+          echo "Project files:"
+          ls -la
+
+          echo "Java source files:"
+          find src/main/java -type f -name "*.java" | sort
+
+          echo "Application class:"
+          find src/main/java -type f -name "ResumeAnalyserApplication.java"
+
       - name: Build Spring Boot application
         run: |
           chmod +x mvnw || true
+
           if [ -f "./mvnw" ]; then
             ./mvnw clean package -DskipTests
           else
