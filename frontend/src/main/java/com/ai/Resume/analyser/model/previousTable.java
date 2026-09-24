@@ -1,40 +1,44 @@
 package com.ai.Resume.analyser.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class previousTable {
 
     @Id
     private String email;
 
-    private int score;
+    private String report;
 
-    private int atsoptimizationscore;
+    public previousTable() {
+    }
 
-    private String roles;
+    public previousTable(
+            String email,
+            String report) {
 
-    @ElementCollection
-    @Column(length = 450)
-    private List<String> pros;
+        this.email = email;
+        this.report = report;
+    }
 
-    @ElementCollection
-    @Column(length = 450)
-    private List<String> cons;
+    public String getEmail() {
+        return email;
+    }
 
-    @ElementCollection
-    @Column(length = 450)
-    private List<String> suggestions;
+    public void setEmail(
+            String email) {
+
+        this.email = email;
+    }
+
+    public String getReport() {
+        return report;
+    }
+
+    public void setReport(
+            String report) {
+
+        this.report = report;
+    }
 }
