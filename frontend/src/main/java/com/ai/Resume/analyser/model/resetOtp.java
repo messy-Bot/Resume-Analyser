@@ -3,16 +3,26 @@ package com.ai.Resume.analyser.model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class resetOtp {
 
-    @Email
     @NotBlank
+    @Email
     private String email;
+
+    public resetOtp() {
+    }
+
+    public resetOtp(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(
+            String email) {
+
+        this.email = email;
+    }
 }
