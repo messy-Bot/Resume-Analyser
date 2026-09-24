@@ -5,36 +5,26 @@ import com.ai.Resume.analyser.service.appService;
 import org.apache.tika.exception.TikaException;
 
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-
 
 @RestController
 @RequestMapping("/resumeAnalyserCore/service/v1")
 public class appController {
 
-
     private final appService appServices;
 
-
-    public appController(
-            appService appServices) {
-
+    public appController(appService appServices) {
         this.appServices = appServices;
     }
 
 
     @PostMapping("/extract")
     public ResponseEntity<?> extract(
-
             @RequestParam String roles,
-
             @RequestParam MultipartFile file)
-
             throws TikaException,
             IOException,
             InterruptedException {
