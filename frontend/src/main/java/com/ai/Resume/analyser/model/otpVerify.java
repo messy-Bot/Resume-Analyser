@@ -3,18 +3,9 @@ package com.ai.Resume.analyser.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Date;
 
-@Data
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class otpVerify {
 
     @Id
@@ -23,4 +14,48 @@ public class otpVerify {
     private String verifyOtp;
 
     private Date verifyExpiration;
+
+    public otpVerify() {
+    }
+
+    public otpVerify(
+            String email,
+            String verifyOtp,
+            Date verifyExpiration) {
+
+        this.email = email;
+        this.verifyOtp = verifyOtp;
+        this.verifyExpiration = verifyExpiration;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(
+            String email) {
+
+        this.email = email;
+    }
+
+    public String getVerifyOtp() {
+        return verifyOtp;
+    }
+
+    public void setVerifyOtp(
+            String verifyOtp) {
+
+        this.verifyOtp = verifyOtp;
+    }
+
+    public Date getVerifyExpiration() {
+        return verifyExpiration;
+    }
+
+    public void setVerifyExpiration(
+            Date verifyExpiration) {
+
+        this.verifyExpiration =
+                verifyExpiration;
+    }
 }
